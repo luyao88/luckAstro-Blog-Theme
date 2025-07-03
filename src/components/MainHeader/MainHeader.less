@@ -16,9 +16,34 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background: var(--vh-home-banner);
     z-index: -1;
   }
+
+  // 根据配置决定使用图片还是视频背景
+  &.bg-image {
+    background: var(--vh-home-banner)  no-repeat center 70%/cover;
+  }
+
+ 
+
+    // 视频背景样式
+    &.bg-video {
+      background: none;
+      
+      .video-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+        
+        &::-webkit-media-controls {
+          display: none !important;
+        }
+      }
+    }
 
   &>.avatar {
     width: 8.5rem;

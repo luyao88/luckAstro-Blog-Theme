@@ -99,5 +99,33 @@ import '@/styles/Base.less'
   <!-- LINK 标签 -->
   <link rel="canonical" href={canonicalURL} />
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
   <slot />
 </head>
+<script is:inline>
+  // 拦截导航点击
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a')
+    if (!link || link.target === '_blank') return
+
+    // 阻止默认行为
+    e.preventDefault()
+
+    const href = link.href
+
+    // 派发导航事件
+    window.dispatchEvent(
+      new CustomEvent('vh-navigate', {
+        detail: href,
+        bubbles: true,
+        composed: true,
+      })
+    )
+
+    // 使用Astro的客户端导航
+    window.dispatchEvent(
+      new CustomEvent('astro:beforeload', { detail: { href } })
+    )
+    window.location.href = href
+  })
+</script>

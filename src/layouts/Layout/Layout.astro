@@ -1,62 +1,104 @@
 ---
-const { title, keywords, description, pagecover, activeNav, Home } = Astro.props;
+const { title, keywords, description, pagecover, activeNav, Home } = Astro.props
+
+// ... 其他导入和配置 ...
+const currentPath = Astro.url.pathname
+const isHomePath =
+  currentPath === '/' ||
+  currentPath === '/index.html' ||
+  currentPath.startsWith('/page/')
+
 // 网站配置
-import SITE_INFO from "@/config";
-const { GoogleAds, Theme, HomeBanner } = SITE_INFO;
-const { ad_Client, asideAD_Slot, articleAD_Slot } = GoogleAds;
+import SITE_INFO from '@/config'
+const { GoogleAds, Theme, HomeBanner } = SITE_INFO
+const { ad_Client, asideAD_Slot, articleAD_Slot } = GoogleAds
 // Head 依赖
-import Head from "@/components/Head/Head.astro";
+import Head from '@/components/Head/Head.astro'
 // 顶部 Header
-import Header from "@/components/Header/Header.astro";
+import Header from '@/components/Header/Header.astro'
 // Main 区域 Header
-import MainHeader from "@/components/MainHeader/MainHeader.astro";
+import MainHeader from '@/components/MainHeader/MainHeader.astro'
 // Aside组件
-import Aside from "@/components/Aside/Aside.astro";
+import Aside from '@/components/Aside/Aside.astro'
 // 底部 Footer
-import Footer from "@/components/Footer/Footer.astro";
+import Footer from '@/components/Footer/Footer.astro'
 // 返回顶部
-import BackTop from "@/components/BackTop/BackTop.astro";
+import BackTop from '@/components/BackTop/BackTop.astro'
 // 手机端侧边栏
-import MobileSidebar from "@/components/MobileSidebar/MobileSidebar.astro";
+import MobileSidebar from '@/components/MobileSidebar/MobileSidebar.astro'
 // A Modern CSS Reset
-import "@/styles/Reset.less";
+import '@/styles/Reset.less'
 // 全局基础样式
-import "@/styles/Base.less";
+import '@/styles/Base.less'
 // Layout 样式
-import "./Layout.less";
+import './Layout.less'
 ---
 
 <html lang="zh-CN">
-	<Head Title={title} Keywords={keywords} Description={description} PageCover={pagecover}>
-		<!-- 谷歌广告JS加载项 -->
-		{ad_Client && (asideAD_Slot || articleAD_Slot) && <script is:inline async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ad_Client}`} crossorigin="anonymous" />}
-		<!-- 彩旗🎈 -->
-		<script is:inline src="/assets/js/vhCaiqi.js" defer></script>
-		<!-- 设置主题颜色 -->
-		<Fragment
-			set:html={`<style>:root {${Object.entries(Theme)
-				.map(([key, value]) => `${key}:${value};`)
-				.join("")}--vh-main-header-height:${Home ? HomeBanner.HomeHeight : HomeBanner.PageHeight};--vh-home-banner:${HomeBanner.background}}</style>`}
-		/>
-	</Head>
-	<body>
-		<MobileSidebar />
-		<Header activeNav={activeNav} />
-		<main class="main">
-			{HomeBanner.enable && <MainHeader />}
-			<section class="main-inner" style={`padding-top:${HomeBanner.enable ? "0.88rem" : "calc(66px + 0.68rem)"}`}>
-				<section class="main-inner-content">
-					<slot />
-				</section>
-				<Aside />
-			</section>
-			<BackTop />
-		</main>
-		<Footer />
-		<script>
-			import InitFn from "@/scripts/Init";
-			// 全局初始化
-			InitFn();
-		</script>
-	</body>
+  <Head
+    Title={title}
+    Keywords={keywords}
+    Description={description}
+    PageCover={pagecover}
+  >
+    <!-- 谷歌广告JS加载项 -->
+    {
+      ad_Client && (asideAD_Slot || articleAD_Slot) && (
+        <script
+          is:inline
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ad_Client}`}
+          crossorigin="anonymous"
+        />
+      )
+    }
+    <!-- 彩旗🎈 -->
+    <script is:inline src="/assets/js/vhCaiqi.js" defer></script>
+    <!-- 设置主题颜色 -->
+
+    <Fragment
+      set:html={`<style>:root {
+	  ${Object.entries(Theme)
+      .map(([key, value]) => `${key}:${value};`)
+      .join('')}
+	  --vh-main-header-height:${Home ? HomeBanner.HomeHeight : HomeBanner.PageHeight};
+	  --vh-home-banner:url('${HomeBanner.backgroundImg}');
+	}</style>`}
+    />
+  </Head>
+  <body>
+    <MobileSidebar />
+    <Header activeNav={activeNav} />
+    <main class="main">
+      {
+        HomeBanner.enable && (
+          <MainHeader isHome={isHomePath} activeNav={activeNav} />
+        )
+      }
+      <section
+        class="main-inner"
+        style={`padding-top:${HomeBanner.enable ? '0.88rem' : 'calc(66px + 0.68rem)'}`}
+      >
+        <section class="main-inner-content">
+          <slot />
+        </section>
+        <Aside />
+      </section>
+      <BackTop />
+    </main>
+    <Footer />
+    <script>
+      import InitFn from '@/scripts/Init'
+      // 全局初始化
+      InitFn()
+
+      // 添加页面类型检测
+      document.addEventListener('DOMContentLoaded', () => {
+        const path = window.location.pathname
+        const isHome =
+          path === '/' || path === '/index.html' || path.startsWith('/page/')
+        document.querySelector('main-header')?.updateBackground(isHome)
+      })
+    </script>
+  </body>
 </html>
