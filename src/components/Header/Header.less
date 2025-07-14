@@ -33,7 +33,7 @@ header.vh-header {
 
       &:hover {
         &>span {
-          color: var(--vh-white-color);
+          color: var(--vh-main-color);
         }
       }
 
@@ -90,6 +90,29 @@ header.vh-header {
           width: auto;
           object-fit: contain;
         }
+        /* 主题切换按钮样式 */
+        &.theme-toggle-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 !important;
+        
+          .theme-toggle {
+            margin: 0;
+          
+          .vp-color-mode-switch {
+            background: transparent;
+            box-shadow: none;
+            width: 2.2rem;
+            height: 2.2rem;
+            
+            &:hover {
+              background: var(--vh-main-color);
+              transform: none;
+              }
+            }
+          }
+        }
 
       }
     }
@@ -108,6 +131,9 @@ header.vh-header {
 
         &>.menu-btn.nav-link {
           display: flex;
+        }
+        &>.theme-toggle-wrapper {
+          display: none;
         }
       }
     }

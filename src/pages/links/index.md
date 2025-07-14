@@ -1,9 +1,9 @@
 ---
-title: "友情链接"
-h1: "朋友圈 👭"
-desc: "天下快意之事莫若友。"
-layout: "@/layouts/ToolLayout/ToolLayout.astro"
-type: "links"
+title: '友情链接'
+h1: '朋友圈 👭'
+desc: '天下快意之事莫若友。'
+layout: '@/layouts/ToolLayout/ToolLayout.astro'
+type: 'links'
 ---
 
 :::note{type="success"}
@@ -13,7 +13,7 @@ type: "links"
 :::
 
 ```yaml
-name: 韩小韩博客
+name: Sᴜᴘᴇʀᴍᴀ'∫Bʟᴏɢ | superma的博客
 link: https://www.vvhan.com/
 avatar: https://q1.qlogo.cn/g?b=qq&nk=1655466387&s=640
 desc: 运气是计划之外的东西.

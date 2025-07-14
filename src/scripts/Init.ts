@@ -39,7 +39,8 @@ import HanAnalyticsInit from '@/scripts/HanAnalytics'
 import SeoPushInit from '@/scripts/SeoPush'
 // SmoothScroll 滚动优化
 import SmoothScroll from '@/scripts/Smoothscroll'
-
+// MainHeader 初始化模块
+import { initVhNavigate, destroyVhNavigate } from '@/scripts/MainHeader'
 // ============================================================
 
 // 页面初始化 Only
@@ -89,6 +90,8 @@ const indexInit = async (only: boolean = true) => {
   vhSearchInit()
   // 移动端侧边栏初始化
   initMobileSidebar()
+  // 初始化 MainHeader 的导航监听
+  only && initVhNavigate()
 }
 
 export default () => {
@@ -107,9 +110,11 @@ export default () => {
     // 销毁音乐
     MusicList.forEach((i: any) => i.destroy())
     MusicList.length = 0
+    // 销毁 MainHeader 导航监听
+    destroyVhNavigate()
   })
   console.log(
-    '%c🌻 开源博客  | Superma | Github：https://github.com/luyao88/astro_blog 🌻',
+    '%c🌻 开源博客  | Superma | Github：https://github.com/luyao88/luckAstro-Blog-Theme 🌻',
     'color:#fff; background: linear-gradient(270deg, #18d7d3, #68b7dd, #8695e6, #986fee); padding: 8px 15px; border-radius: 8px'
   )
   console.log(

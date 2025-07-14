@@ -1,10 +1,10 @@
 export default {
   // 网站标题
-  Title: 'Sᴜᴘᴇʀᴍᴀ Bʟᴏɢ',
+  Title: "Sᴜᴘᴇʀᴍᴀ'∫Bʟᴏɢ",
   // 网站地址
   Site: 'https://luyao88.com',
   // 网站副标题  不曾与你分享的时间,我在进步
-  Subtitle: '暗处生长，静待光芒.',
+  Subtitle: '马亚洲的博客',
   // 网站描述
   Description:
     'Superma博客 专注于全栈开发与游戏引擎相关技术的实战学习分享，涵盖Java、H5、JS、Unity、Cocos等，并涉及Node、Python、Linux、等领域。同时，博客也分享作者的生活、音乐和旅行的热爱。',
@@ -29,30 +29,30 @@ export default {
   CreateTime: '2021-04-22',
   // 顶部 Banner 配置
   HomeBanner: {
-    enable: true,
-    // 首页高度
-    HomeHeight: '58.88rem',
+    enable: true, //是否开启banner
+    // 首页高度  '58.88rem', 100vh全浏览器屏幕
+    HomeHeight: '100vh',
     // 其他页面高度
     PageHeight: '28.88rem',
-    //首页播放视频
-    backgroundVideo: '/assets/video/bg_1.mp4',
-    // 默认其他页面背景图片
-    backgroundImg: '/assets/images/home-banner.webp',
+    //首页播放视频 /assets/video/bg_1.mp4
+    backgroundVideo: '',
+    // 默认其他页面背景图片  //homeBnaner_02.jpg
+    backgroundImg: '/assets/images/homeBnaner_02.jpg',
     // "url('/assets/images/home-banner.webp') no-repeat center 70%/cover",
     //"url('/assets/images/1751364092817.jpg') no-repeat center 70%/cover",
   },
   // 博客主题配置
   Theme: {
     // 颜色请用 16 进制颜色码
-    // 主题颜色()
-    '--vh-main-color': 'rgb(3, 182, 170)',
+    // 主题颜色()  rgb(3, 182, 170) #ff83a4ff #cd1a63
+    '--vh-main-color': '#e9819d',
     // 字体颜色
     '--vh-font-color': ' #34495e',
     // 侧边栏宽度
     '--vh-aside-width': '318px',
     // 全局圆角
     '--vh-main-radius': '0.88rem',
-    // 主体内容宽度
+    // 主体内容宽度  '1458px',
     '--vh-main-max-width': '1458px',
   },
   // 导航栏 (新窗口打开 newWindow: true)

@@ -21,7 +21,14 @@
 
   // 根据配置决定使用图片还是视频背景
   &.bg-image {
-    background: var(--vh-home-banner)  no-repeat center 70%/cover;
+    background: 
+    linear-gradient(
+      to bottom,
+      rgba(60, 44, 126, 0.1) 0%,
+      rgba(143, 64, 64, 0.3) 50%,
+      rgba(68, 122, 68, 0.205) 100%
+    ),
+    var(--vh-home-banner) no-repeat center 70%/cover;
   }
 
  
@@ -109,14 +116,40 @@
       }
     }
   }
+  .arrow-down:hover {
+    border-top-color: var(--vh-main-color);
+  }
+  .arrow-down {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 15px solid #000000;
+    cursor: pointer;
+    animation: pulse 1.5s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+    50% {
+      opacity: 0.5;
+      transform: scale(1.1) translateY(-10px);
+    }
+  }
 }
 
 
 
 @media screen and (max-width: 1150px) {
   .header-main {
-    height: 26rem;
-
+    //height: 26rem;
+    height: var(--vh-main-header-height); /* 使用配置的高度变量 */
     &>.avatar {
       width: 6rem;
       height: 6rem;
@@ -125,5 +158,14 @@
     &>.auther {
       padding-top: 0;
     }
+
+    &>.arrow-down {
+      border-left-width: 5px;
+      border-right-width: 5px;
+      border-top-width: 10px;
+      top: auto; /* 确保不覆盖底部位置 */
+      bottom: 1rem; /* 保持原有底部位置 */
+    }
   }
 }
+

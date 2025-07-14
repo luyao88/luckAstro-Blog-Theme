@@ -1,17 +1,64 @@
 ---
-import "./BackTop.less";
+import './BackTop.less'
 ---
 
-<section class="vh-back-top">
-	<svg viewBox="0 0 24 24">
-		<defs>
-			<linearGradient id="Gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-				<stop offset="0%" style="stop-color:blue;stop-opacity:1"></stop>
-				<stop offset="50%" style="stop-color:violet;stop-opacity:1"></stop>
-				<stop offset="100%" style="stop-color:indigo;stop-opacity:1"></stop>
-			</linearGradient>
-		</defs>
-		<circle stroke="url(#Gradient)" cx="12" cy="12" r="10" fill="none" stroke-width="2" stroke-linecap="round" transform="rotate(-90, 12, 12)"></circle>
-	</svg>
-	<svg class="icon" viewBox="0 0 24 24"><path fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 15l6-6l6 6"></path></svg>
-</section>
+<div class="vh-tools-group">
+  <!-- 设置按钮 -->
+  <section class="vh-settings" data-tip="设置">
+    <svg viewBox="0 0 24 24">
+      <path
+        fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0-6 0M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83a2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33a1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2a2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0a2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2a2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83a2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2a2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0a2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2a2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
+      ></path>
+    </svg>
+  </section>
+  <!-- 缩放按钮 -->
+  <section class="vh-zoom" data-tip="切换全屏">
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path
+        d="M15 3v3a2 2 0 0 0 2 2h3M3 8h3a2 2 0 0 0 2-2V3m0 18v-3a2 2 0 0 0-2-2H3M21 16h-3a2 2 0 0 0-2 2v3"
+      ></path>
+    </svg>
+  </section>
+  <!-- 返回顶部按钮 -->
+  <section class="vh-back-top" data-tip="返回顶部">
+    <svg viewBox="0 0 24 24">
+      <defs>
+        <linearGradient id="Gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:blue;stop-opacity:1"></stop>
+          <stop offset="50%" style="stop-color:violet;stop-opacity:1"></stop>
+          <stop offset="100%" style="stop-color:indigo;stop-opacity:1"></stop>
+        </linearGradient>
+      </defs>
+      <circle
+        stroke="url(#Gradient)"
+        cx="12"
+        cy="12"
+        r="10"
+        fill="none"
+        stroke-width="2"
+        stroke-linecap="round"
+        transform="rotate(-90, 12, 12)"></circle>
+    </svg>
+    <svg class="icon" viewBox="0 0 24 24"
+      ><path
+        fill="none"
+        stroke="#000"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="m6 15l6-6l6 6"></path></svg
+    >
+  </section>
+</div>

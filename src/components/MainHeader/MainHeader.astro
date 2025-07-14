@@ -29,69 +29,10 @@ const { isHome } = Astro.props
       alt="avatar"
     />
   </div>
+  <!-- 添加作者logo -->
   <h3 class="auther">{SITE_INFO.Author || '-'}</h3>
+  <!-- 添加打字机效果 -->
   <p class="desc"></p>
-
-  <!-- 添加客户端脚本处理导航变化 -->
-  <script is:inline>
-    class MainHeader extends HTMLElement {
-      constructor() {
-        super()
-        this.handleNavigation = this.handleNavigation.bind(this)
-      }
-
-      connectedCallback() {
-        window.addEventListener('vh-navigate', this.handleNavigation)
-      }
-
-      disconnectedCallback() {
-        window.removeEventListener('vh-navigate', this.handleNavigation)
-      }
-
-      handleNavigation(event) {
-        const url = new URL(event.detail, window.location.origin)
-        const isHomePage = this.isHomePath(url.pathname)
-        this.updateBackground(isHomePage)
-      }
-
-      isHomePath(path) {
-        return (
-          path === '/' || path === '/index.html' || path.startsWith('/page/')
-        )
-      }
-
-      updateBackground(isHome) {
-        const header = this.querySelector('.header-main')
-        if (!header) return
-
-        header.classList.toggle('bg-video', isHome)
-        header.classList.toggle('bg-image', !isHome)
-
-        // 更新视频元素
-        if (isHome) {
-          if (!header.querySelector('.video-bg')) {
-            const video = document.createElement('video')
-            video.className = 'video-bg'
-            video.autoplay = true
-            video.loop = true
-            video.muted = true
-            video.playsInline = true
-            video.poster = `${HomeBanner.backgroundImg}`
-
-            const source = document.createElement('source')
-            source.src = `${HomeBanner.backgroundVideo}`
-            source.type = 'video/mp4'
-
-            video.appendChild(source)
-            header.prepend(video)
-          }
-        } else {
-          const video = header.querySelector('.video-bg')
-          if (video) video.remove()
-        }
-      }
-    }
-
-    customElements.define('main-header', MainHeader)
-  </script>
+  <!-- 添加箭头元素 -->
+  {isHome && <div class="arrow-down" />}
 </div>
