@@ -12,8 +12,8 @@
   // 通用按钮基础样式
   section{
     position: relative; // 相对定位
-    width: 2.6rem;
-    height: 2.6rem;
+    width: 2.2rem;
+    height: 2.2rem;
     border-radius: 50%;
     border: 1px solid #e5e7eb;
     background-color: var(--vh-white-color);
@@ -27,6 +27,12 @@
     transition: transform .188s, opacity .18s;
     z-index: 9;
 
+      // 新增：强制显示类
+    &.force-show {
+      transform: translateX(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
      &.active {
       transform: translateX(0);
       opacity: 1;
@@ -42,6 +48,7 @@
     }
      svg {
       pointer-events: none;
+       //fill: #808080; /* 主色调 */
     }
     
     // 统一的工具提示基础样式
@@ -72,10 +79,29 @@
     
 
     svg {
-      width: 60%;
-      height: 60%;
+      width: 55%;
+      height: 55%;
     }
   }
+
+    // 新增：默认隐藏额外按钮
+  .lang-switch,
+  .sidebar-toggle,
+  .theme-switch {
+    display: none; // 默认隐藏
+     display: flex;
+    align-items: center;
+    justify-content: center;
+    // 当设置面板打开时显示
+    &.force-show {
+      display: flex; // 显示
+    }
+     svg {
+      width: 55%;
+      height: 55%;
+    }
+  }
+
 
   // 设置按钮特殊样式
   .vh-settings svg {
@@ -104,8 +130,8 @@
       height: calc(100% + 1px);
 
       &.icon {
-        width: 66%;
-        height: 66%;
+        width: 60%;
+        height: 60%;
       }
     }
   }

@@ -112,6 +112,9 @@ export default () => {
     MusicList.length = 0
     // 销毁 MainHeader 导航监听
     destroyVhNavigate()
+
+    // 确保翻译函数可用
+    window.zh_tran = zh_tran
   })
   console.log(
     '%c🌻 开源博客  | Superma | Github：https://github.com/luyao88/luckAstro-Blog-Theme 🌻',

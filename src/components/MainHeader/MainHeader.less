@@ -124,11 +124,7 @@
     bottom: 1rem;
     left: 50%;
     transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border-left: 7px solid transparent;
-    border-right: 7px solid transparent;
-    border-top: 15px solid #000000;
+    
     cursor: pointer;
     animation: pulse 1.5s infinite;
   }
@@ -160,9 +156,6 @@
     }
 
     &>.arrow-down {
-      border-left-width: 5px;
-      border-right-width: 5px;
-      border-top-width: 10px;
       top: auto; /* 确保不覆盖底部位置 */
       bottom: 1rem; /* 保持原有底部位置 */
     }
