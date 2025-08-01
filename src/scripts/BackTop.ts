@@ -79,9 +79,19 @@ const toggleSidebar = () => {
 // 缩放功能
 const toggleFullscreen = () => {
   if (!document.fullscreenElement) {
-    document.documentElement.requestFullscreen()
+    document.documentElement
+      .requestFullscreen()
+      .then(() => {
+        isFullScreen = true
+        localStorage.setItem('isFullScreen', 'true')
+      })
+      .catch((err) => {
+        console.error('进入全屏失败:', err)
+      })
   } else {
     document.exitFullscreen()
+    isFullScreen = false
+    localStorage.setItem('isFullScreen', 'false')
   }
 }
 
@@ -123,6 +133,36 @@ export default () => {
   extraButtons.forEach((button) => {
     button.classList.remove('force-show')
   })
+
+  // 安全地恢复全屏状态
+  const saveIsFullScreen = localStorage.getItem('isFullScreen')
+  isFullScreen = saveIsFullScreen === 'true'
+
+  // 只在需要时退出全屏
+  if (isFullScreen && document.fullscreenElement) {
+    // 不需要操作，已经处于全屏状态
+  } else if (isFullScreen && !document.fullscreenElement) {
+    // 延迟执行以避免文档未激活错误
+    setTimeout(() => {
+      if (!document.fullscreenElement) {
+        document.documentElement
+          .requestFullscreen()
+          .then(() => {
+            console.log('全屏状态已恢复')
+          })
+          .catch((err) => {
+            console.log('自动恢复全屏失败（需要用户交互）:', err)
+            // 如果自动恢复失败，更新状态
+            isFullScreen = false
+            localStorage.setItem('isFullScreen', 'false')
+          })
+      }
+    }, 500)
+  } else if (document.fullscreenElement) {
+    // 如果当前是全屏但存储状态不是，则退出全屏
+    document.exitFullscreen()
+  }
+  //console.log('saveIsFullScreen', saveIsFullScreen)
 
   // 从localStorage恢复语言状态
   const savedLang = localStorage.getItem('lang')

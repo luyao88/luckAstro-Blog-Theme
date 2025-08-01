@@ -1,13 +1,12 @@
 @import url('/assets/font/index.css');
 
 :root {
-	// 白色颜色
-	--vh-white-color: #fff;
-	// BoxShadow
-	--vh-box-shadow: 0 3px 8px 6px #07111b0d;
-	// Body 背景颜色
-	--vh-body-bg: #F8F8F8;
-	// Back Top 按钮位置
+	// 亮暗颜色
+	--vh-light-color: #ffffff;
+	// BoxShadow导航栏框阴影
+	--vh-box-shadow: 0 3px 8px 6px #ffffff0d;
+	--vh-header-bg-color: rgba(255, 255, 255, 0.36);
+	//右侧侧边按钮 Back Top 按钮位置
 	--vh-back-top: calc((calc(100vw - 2rem) - min((100vw - 2rem), var(--vh-main-max-width))) / 2 + 1rem);
 	// 字体颜色
 	--vh-font-88: rgb(from var(--vh-font-color) r g b / 88%);
@@ -75,7 +74,25 @@ html {
 	overflow-wrap: break-word;
 	font-size: 16px;
 	font-weight: 400;
-	font-variant-east-asian: traditional;
+	font-variant-east-asian: traditional;	
+    
+	&.dark { 
+		--vh-body-bg: #1a1818;  // 背景
+		--vh-font-color:#ffffff; // 字体
+		--vh-box-shadow: 0 3px 8px 6px #ffffff00; // BoxShadow
+		--vh-header-bg-color: #1a1818;// 头部背景色
+		--vh-light-color: #000000; //主题颜色
+		--vh-box-border:   #000000;//悬浮导航栏boder
+	}
+	&.light { 
+		--vh-body-bg: var(--vh-light-color);  // 背景
+		--vh-font-color: #34495e; // 字体
+		--vh-box-shadow: 0 3px 8px 6px #ffffff0d;// BoxShadow
+		--vh-header-bg-color: rgba(255, 255, 255, 0.36);// 头部背景色
+		--vh-light-color: #ffffff; //主题颜色
+		--vh-box-border:  #e5e7eb;//悬浮导航栏boder
+	}
+
 	&>body {
 		position: relative;
 		box-sizing: border-box;
@@ -96,13 +113,10 @@ html {
 			top: 0;
 			width: 100vw;
 			height: 100vh;
-			background: #fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='10' height='10' fill='none' stroke='rgb(0 0 0 / 0.1)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+			background: var(--vh-body-bg) url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='10' height='10' fill='none' stroke='rgb(0 0 0 / 0.1)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
 			z-index: -1;
 		}
 
-
-
-		
 		&>footer {
 			box-sizing: border-box;
 			width: 100%;
@@ -110,6 +124,47 @@ html {
 		}
 	}
 }
+//------------------------------暗黑模式切换动画----------------------------------------------------
+::view-transition-old(*) {
+        animation: none;
+      }
+
+      ::view-transition-new(*) {
+        animation: clip 0.5s ease-in;
+      }
+
+      ::view-transition-old(root) {
+        z-index: 1;
+      }
+
+      ::view-transition-new(root) {
+        z-index: 9999;
+      }
+	  html.dark::view-transition-old(*) {
+  animation: clip .5s ease-in reverse;
+}
+
+html.dark::view-transition-new(*) {
+  animation: none;
+}
+
+html.dark::view-transition-old(root) {
+  z-index: 9999;
+}
+
+html.dark::view-transition-new(root) {
+  z-index: 1;
+}
+
+@keyframes clip {
+  from {
+    clip-path: circle(0% at var(--x) var(--y));
+  }
+  to{
+    clip-path: circle(var(--r) at var(--x) var(--y));
+  }
+}
+//-------------------------------------------------------------------------------------------
 
 pre,
 code {
@@ -137,7 +192,7 @@ img[data-vh-lz-src] {
 
 	&:hover,
 	&.active {
-		color: var(--vh-white-color) !important;
+		color: var(--vh-light-color) !important;
 
 		&::before {
 			transform: scale(1.2);
@@ -290,7 +345,7 @@ html.is-animating {
 		box-sizing: border-box;
 		padding: 0.75rem;
 		border-radius: 0.5rem;
-		background-color: var(--vh-white-color);
+		background-color: var(--vh-light-color);
 		box-shadow: var(--vh-box-shadow);
 		overflow: hidden;
 

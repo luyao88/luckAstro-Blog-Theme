@@ -55,7 +55,7 @@
   &>.avatar {
     width: 8.5rem;
     height: 8.5rem;
-    border: 2px solid var(--vh-white-color);
+    border: 2px solid var(--vh-default);
     border-radius: 50%;
     transition: transform 0.3s ease-in-out;
     overflow: hidden;
@@ -75,7 +75,7 @@
     padding-top: 1.88rem;
     font-size: 1.88rem;
     font-weight: 600;
-    color: var(--vh-white-color);
+    color: var(--vh-default);
   }
 
   &>.desc {
@@ -85,7 +85,7 @@
     width: 100%;
     max-width: 28.88rem;
     height: max-content;
-    color: var(--vh-white-color);
+    color: var(--vh-light-color);
     text-align: center;
     font-size: 0.88rem;
     line-height: 1.5rem;
@@ -99,7 +99,7 @@
       width: 100%;
       height: 1px;
       opacity: .5;
-      background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgb(0 0 0 / 70%)), color-stop(35%, var(--vh-white-color)), color-stop(65%, var(--vh-white-color)), color-stop(100%, rgb(0 0 0 / 70%)));
+      background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgb(0 0 0 / 70%)), color-stop(35%, var(--vh-light-color)), color-stop(65%, var(--vh-light-color)), color-stop(100%, rgb(0 0 0 / 70%)));
     }
 
     &::after {
@@ -126,7 +126,7 @@
     transform: translateX(-50%);
     
     cursor: pointer;
-    animation: pulse 1.5s infinite;
+    animation: pulse 3s infinite; 
   }
   @keyframes pulse {
     0%, 100% {

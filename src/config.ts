@@ -27,6 +27,8 @@ export default {
   ],
   // 网站创建时间
   CreateTime: '2021-04-22',
+  //版本
+  version: '1.0.0',
   // 顶部 Banner 配置
   HomeBanner: {
     enable: true, //是否开启banner
@@ -46,7 +48,7 @@ export default {
     // 颜色请用 16 进制颜色码
     // 主题颜色()  rgb(3, 182, 170) #ff83a4ff #cd1a63
     '--vh-main-color': '#e9819d',
-    // 字体颜色
+    // 字体颜色  浅色主题字体:  #34495e',
     '--vh-font-color': ' #34495e',
     // 侧边栏宽度
     '--vh-aside-width': '318px',

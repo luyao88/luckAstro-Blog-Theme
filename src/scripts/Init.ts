@@ -48,10 +48,10 @@ const videoList: any[] = []
 const MusicList: any[] = []
 let commentLIst: any = { walineInit: null }
 const indexInit = async (only: boolean = true) => {
-  // 初始化网站运行时间
-  only && initWebSiteTime()
   // 初始化BackTop组件
   only && BackTopInitFn()
+  // 初始化网站运行时间
+  only && initWebSiteTime()
   // SmoothScroll 滚动优化
   only && SmoothScroll()
   // 图片灯箱
@@ -117,11 +117,24 @@ export default () => {
     window.zh_tran = zh_tran
   })
   console.log(
-    '%c🌻 开源博客  | Superma | Github：https://github.com/luyao88/luckAstro-Blog-Theme 🌻',
-    'color:#fff; background: linear-gradient(270deg, #18d7d3, #68b7dd, #8695e6, #986fee); padding: 8px 15px; border-radius: 8px'
+    `%c ✨ 🌻 马亚洲的博客  | ✨Sᴜᴘᴇʀᴍᴀ'∫Bʟᴏɢ V1.0.0 | ✨Github：https://github.com/luyao88/luckAstro-Blog-Theme %c
+                🍷 君不见黄河之水天上来，奔流到海不复回
+                🍷 君不见高堂明镜悲白发，朝如青丝暮成雪
+                🎵 人生得意须尽欢，莫使金樽空对月
+                🌟 天生我材必有用，千金散尽还复来
+                ⚔️ 烹羊宰牛且为乐，会须一饮三百杯
+                🌙 古来圣贤皆寂寞，惟有饮者留其名
+                🥂 呼儿将出换美酒，与尔同销万古愁
+                
+                —— 李白《将进酒》`,
+    `color: #FFFDE7; background: linear-gradient(90deg,  #18d7d3, #dd68ddff, #8695e6, #986fee); 
+     font-size: 12px; padding: 8px 15px; border-radius: 8px; font-weight: bold; text-shadow: 0 0 2px #000;`,
+    `color: #666666ff; font-size: 14px;  font-family: '楷体', KaiTi, serif; 
+     line-height: 1.8; text-shadow: 0 0 3px #5D4037;`
   )
+
   console.log(
     '%c\u521D\u59CB\u5316\u5B8C\u6BD5.',
-    'color: #ffffff; background: #000; padding:5px'
+    'color: #FFFDE7; background: #000; padding:5px'
   )
 }

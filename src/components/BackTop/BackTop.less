@@ -15,8 +15,7 @@
     width: 2.2rem;
     height: 2.2rem;
     border-radius: 50%;
-    border: 1px solid #e5e7eb;
-    background-color: var(--vh-white-color);
+    background-color: var(--vh-box-border);
     cursor: pointer;
     pointer-events: none;
      display: flex;
@@ -24,7 +23,7 @@
     justify-content: center;
      transform: translateX(1rem);
     opacity: 0;
-    transition: transform .188s, opacity .18s;
+    transition: transform 0.188s ease, opacity 0.18s ease;
     z-index: 9;
 
       // 新增：强制显示类
@@ -88,8 +87,7 @@
   .lang-switch,
   .sidebar-toggle,
   .theme-switch {
-    display: none; // 默认隐藏
-     display: flex;
+    
     align-items: center;
     justify-content: center;
     // 当设置面板打开时显示
