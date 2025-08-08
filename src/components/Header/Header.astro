@@ -40,8 +40,8 @@ import ThemeToggle from '@/components/ThemeToggle/ThemeToggle.astro'
             href={i.link}
             target={i.target ? '_blank' : '_self'}
           >
-            {i.text}
             <Svg src={i.icon} />
+            {i.text}
           </a>
         ))
       }
@@ -60,7 +60,7 @@ import ThemeToggle from '@/components/ThemeToggle/ThemeToggle.astro'
         > 搜索</span
       >
       <!-- 亮黑主题切换按钮 -->
-      <span class="nav-link theme-toggle-wrapper">
+      <span class="nav-link vh-hover theme-btn">
         <ThemeToggle />
       </span>
       <!-- 侧边栏按钮(mobile模式) -->

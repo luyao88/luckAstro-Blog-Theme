@@ -18,25 +18,31 @@
     pointer-events: none;
     z-index: -1;
   }
-
+     // 添加遮罩层样式
+  .header-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:var(--vh-mask); // 黑色半透明遮罩
+    z-index: 0; // 在视频/图片上方，其他内容下方
+  } 
   // 根据配置决定使用图片还是视频背景
   &.bg-image {
     background: 
+
     linear-gradient(
       to bottom,
       rgba(60, 44, 126, 0.1) 0%,
       rgba(143, 64, 64, 0.3) 50%,
-      rgba(68, 122, 68, 0.205) 100%
+      rgba(15, 15, 15, 0.205) 100%
     ),
     var(--vh-home-banner) no-repeat center 70%/cover;
   }
-
- 
-
     // 视频背景样式
     &.bg-video {
       background: none;
-      
       .video-bg {
         position: absolute;
         top: 0;
@@ -45,7 +51,7 @@
         height: 100%;
         object-fit: cover;
         z-index: -1;
-        
+
         &::-webkit-media-controls {
           display: none !important;
         }
@@ -55,7 +61,7 @@
   &>.avatar {
     width: 8.5rem;
     height: 8.5rem;
-    border: 2px solid var(--vh-default);
+    border: 2px solid white;
     border-radius: 50%;
     transition: transform 0.3s ease-in-out;
     overflow: hidden;
@@ -75,7 +81,7 @@
     padding-top: 1.88rem;
     font-size: 1.88rem;
     font-weight: 600;
-    color: var(--vh-default);
+    color:  white;;
   }
 
   &>.desc {
@@ -85,7 +91,7 @@
     width: 100%;
     max-width: 28.88rem;
     height: max-content;
-    color: var(--vh-light-color);
+    color: white;;
     text-align: center;
     font-size: 0.88rem;
     line-height: 1.5rem;
@@ -121,21 +127,26 @@
   }
   .arrow-down {
     position: absolute;
-    bottom: 1rem;
     left: 50%;
     transform: translateX(-50%);
-    
+     bottom: 0.5rem; /* 添加这行以将箭头定位在底部 */
     cursor: pointer;
-    animation: pulse 3s infinite; 
+    animation: pulse 4s infinite; 
+    z-index: 1; // 确保箭头在遮罩层上方
+    width: 30px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   @keyframes pulse {
     0%, 100% {
       opacity: 1;
-      transform: scale(1) translateY(0);
+      transform: translateX(-50%) scale(1) translateY(0);
     }
     50% {
       opacity: 0.5;
-      transform: scale(1.1) translateY(-10px);
+      transform: translateX(-50%) scale(1.1) translateY(-10px);
     }
   }
 }
@@ -158,6 +169,8 @@
     &>.arrow-down {
       top: auto; /* 确保不覆盖底部位置 */
       bottom: 1rem; /* 保持原有底部位置 */
+      left: 50%; /* 确保水平居中 */
+      transform: translateX(-50%); /* 确保水平居中 */
     }
   }
 }

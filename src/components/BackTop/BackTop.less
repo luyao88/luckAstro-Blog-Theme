@@ -8,7 +8,7 @@
     flex-direction: column;
     gap: 1rem;
     z-index: 9;
-
+  
   // 通用按钮基础样式
   section{
     position: relative; // 相对定位
@@ -99,6 +99,16 @@
       height: 55%;
     }
   }
+// 主题切换按钮样式
+  .theme-switch{
+     // 图标显示控制 - 默认显示暗色图标
+    .light-icon {
+      display: none;
+    }
+    .dark-icon {
+      display: block;
+    }
+  }
 
 
   // 设置按钮特殊样式
@@ -144,3 +154,31 @@
     transform: rotate(360deg);
   }
 }
+
+// 当 html 有 light 类时，显示亮色图标
+  html.light .theme-switch {
+    .light-icon {
+      display: block;
+    }
+    .dark-icon {
+      display: none;
+    }
+  }
+
+  // 当 html 有 dark 类时，显示暗色图标
+  html.dark .theme-switch {
+    .dark-icon {
+      display: block;
+    }
+    .light-icon {
+      display: none;
+    }
+  }
+  //  @media (max-width: 888px) {
+  //   .vh-tools-group .vh-zoom,
+  //   .vh-tools-group .sidebar-toggle {
+  //     display: none;
+  //   }
+  //}
+
+ 

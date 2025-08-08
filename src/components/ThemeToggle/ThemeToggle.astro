@@ -108,41 +108,6 @@
     background: var(--vh-main-color);
   }
 </style>
-
-<!-- <script>
-  ;(function () {
-    const colorModeSwitch = document.getElementById('color-mode-switch')
-    if (!colorModeSwitch) return
-
-    // 设置主题
-    const setTheme = (theme: 'light' | 'dark') => {
-      const html = document.documentElement
-      html.classList.remove('light', 'dark')
-      html.classList.add(theme)
-      localStorage.setItem('theme', theme)
-      console.log(`Theme set to ${theme}`)
-    }
-
-    // 切换主题
-    const toggleTheme = () => {
-      const html = document.documentElement
-      const currentTheme = html.classList.contains('dark') ? 'dark' : 'light'
-      const nextTheme = currentTheme === 'light' ? 'dark' : 'light'
-      setTheme(nextTheme)
-    }
-
-    // 初始化
-    const savedTheme = localStorage.getItem('theme')
-    if (savedTheme === 'dark') {
-      setTheme('dark')
-    } else {
-      setTheme('light')
-    }
-
-    // 添加事件
-    colorModeSwitch.addEventListener('click', toggleTheme)
-  })()
-</script> -->
 <script>
   ;(function () {
     const colorModeSwitch = document.getElementById('color-mode-switch')

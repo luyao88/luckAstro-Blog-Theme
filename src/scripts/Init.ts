@@ -117,7 +117,7 @@ export default () => {
     window.zh_tran = zh_tran
   })
   console.log(
-    `%c ✨ 🌻 马亚洲的博客  | ✨Sᴜᴘᴇʀᴍᴀ'∫Bʟᴏɢ V1.0.0 | ✨Github：https://github.com/luyao88/luckAstro-Blog-Theme %c
+    `%c    🌻  ✨Sᴜᴘᴇʀᴍᴀ'∫Bʟᴏɢ V1.0.0        %c
                 🍷 君不见黄河之水天上来，奔流到海不复回
                 🍷 君不见高堂明镜悲白发，朝如青丝暮成雪
                 🎵 人生得意须尽欢，莫使金樽空对月

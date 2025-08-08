@@ -27,6 +27,7 @@ main.main {
       height: max-content;
       overflow: hidden;
     }
+  
   }
 }
 
@@ -34,6 +35,11 @@ main.main {
   main.main {
     &>.main-inner {
       flex-direction: column;
+       // 在小屏幕隐藏主页面的Aside组件 - 使用更具体的选择器
+      & > aside.vh-aside {
+        display: none !important;
+      }
+     
     }
   }
 }

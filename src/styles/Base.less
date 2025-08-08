@@ -4,7 +4,7 @@
 	// 亮暗颜色
 	--vh-light-color: #ffffff;
 	// BoxShadow导航栏框阴影
-	--vh-box-shadow: 0 3px 8px 6px #ffffff0d;
+	--vh-box-shadow: 0 3px 8px 6px rgba(0, 0, 0, 0.08);
 	--vh-header-bg-color: rgba(255, 255, 255, 0.36);
 	//右侧侧边按钮 Back Top 按钮位置
 	--vh-back-top: calc((calc(100vw - 2rem) - min((100vw - 2rem), var(--vh-main-max-width))) / 2 + 1rem);
@@ -21,7 +21,6 @@
 	--vh-main-color-56: rgb(from var(--vh-main-color) r g b / 56%);
 	--vh-main-color-28: rgb(from var(--vh-main-color) r g b / 28%);
 	--vh-main-color-16: rgb(from var(--vh-main-color) r g b / 16%);
-	--vh-main-color-6: rgb(from var(--vh-main-color) r g b / 6%);
 
 	// Default 
 	--vh-default: #BEC4CC;
@@ -41,6 +40,12 @@
 	// Import
 	--vh-import: #B984DF;
 	--vh-import-hover: #B984DF18;
+	//遮罩
+	--vh-mask: rgba(0, 0, 0, 0.3);
+	//footer背景色
+	--vh-footer-bg-color: rgba(255, 255, 255, 0.03);
+	//遮罩主题色
+	--vh-mask-main-clor:  rgba(118, 61, 135, 0.3);
 }
 
 * {
@@ -77,20 +82,35 @@ html {
 	font-variant-east-asian: traditional;	
     
 	&.dark { 
-		--vh-body-bg: #1a1818;  // 背景
+		
+		--vh-main-color:  rgb(3, 182, 170);
+		--vh-body-bg:#151c28;  // 背景
 		--vh-font-color:#ffffff; // 字体
-		--vh-box-shadow: 0 3px 8px 6px #ffffff00; // BoxShadow
-		--vh-header-bg-color: #1a1818;// 头部背景色
-		--vh-light-color: #000000; //主题颜色
-		--vh-box-border:   #000000;//悬浮导航栏boder
+		--vh-box-shadow: 0 3px 8px 6px rgba(255, 254, 254, 0.1); // BoxShadow
+		--vh-header-bg-color:#151c28;// 头部背景色
+		--vh-light-color: #1c1c1c; //主题颜色
+		--vh-box-border:   #1f1f1f;//悬浮导航栏boder
+		--vh-mask: rgba(0, 0, 0, 0.3);  // 遮罩
+		--vh-footer-bg-color: rgba(255, 255, 255, 0.02);
+		--vh-aside-bg:  linear-gradient(60deg, #2a1a30 0%, #1a2a3a 100%);
+		.wormhole-image {
+		content: url('https://img.foreverblog.cn/wormhole_3.gif');
+	}
 	}
 	&.light { 
+		 --vh-main-color: rgba(93, 0, 186, 1);
 		--vh-body-bg: var(--vh-light-color);  // 背景
 		--vh-font-color: #34495e; // 字体
-		--vh-box-shadow: 0 3px 8px 6px #ffffff0d;// BoxShadow
+		--vh-box-shadow: 0 3px 8px 6px rgba(0, 0, 0, 0.08); // BoxShadow
 		--vh-header-bg-color: rgba(255, 255, 255, 0.36);// 头部背景色
 		--vh-light-color: #ffffff; //主题颜色
-		--vh-box-border:  #e5e7eb;//悬浮导航栏boder
+		--vh-box-border:  #d7deea;//悬浮导航栏boder
+		--vh-aside-bg:  linear-gradient(60deg, rgb(255, 215, 228) 0%, rgb(200, 241, 255) 100%);
+		--vh-mask: rgba(0, 0, 0, 0);  // 遮罩
+		--vh-footer-bg-color: rgba(0, 0, 0, 0.02);
+		.wormhole-image {
+		content: url('https://img.foreverblog.cn/wormhole_1.gif');
+	}
 	}
 
 	&>body {
@@ -103,7 +123,7 @@ html {
 		color: var(--vh-font-color);
 		font-family: 'HarmonyOS Sans SC', serif;
 		font-weight: 400;
-		cursor: url('/assets/images/default.cur'), default;
+		// cursor: url('/assets/images/default.cur'), default;
 		overflow-x: hidden;
 		
 		&::before {

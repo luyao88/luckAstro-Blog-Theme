@@ -1,16 +1,16 @@
 .vh-footer {
-  margin-top: 1.68rem;
+    margin-top: 0;
   box-sizing: border-box;
-  padding: 2.6rem 0;
+  padding: 1rem 0;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   height: max-content;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color:var(--vh-footer-bg-color);
   backdrop-filter: saturate(100%) blur(2px);
   user-select: none;
-
+  flex-shrink: 0;
   &>main {
     box-sizing: border-box;
     display: flex;
@@ -39,7 +39,7 @@
         align-items: center;
         width: max-content;
         height: 1.25rem;
-        background-color: #25C2A0;
+        background-color: rgb(112, 192, 0);
         font-size: 0.68rem;
         border-radius: 0.18rem;
         overflow: hidden;
@@ -60,7 +60,7 @@
         }
 
         &>em {
-          background-color: #5D5D5D;
+         background-color: var(--vh-font-color);
         }
 
         &>svg {
@@ -76,47 +76,22 @@
       }
     }
   }
-
-  &>section {
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    gap: 0.88rem;
-    width: 100%;
-    height: max-content;
-
-    p {
-      line-height: 1;
-
-      a {
-        line-height: 1;
-      }
-    }
-
-    &.text {
-      &>p {
-
-        font-size: 0.88rem;
-
-        &>a {
-          color: #94A3B8;
-          transition: opacity 0.18s ease-in-out;
-
-          &:hover {
-            opacity: 0.88;
-          }
-        }
-      }
-    }
-
-    &.icon {
-      &>p {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        gap: 1rem;
-      }
-    }
-  }
-
 }
+
+ .icp-link ,.powered-by {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.8rem; // 调小字体
+  text-decoration: none;
+}
+
+// ICP图标样式
+.icp-icon,.icp-icon {
+  height: 0.5em; 
+  width: auto;
+  vertical-align: middle;
+  margin-right: 0.5em;
+  max-height: 24px;
+  max-width: 30px;
+}
+

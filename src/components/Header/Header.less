@@ -7,7 +7,7 @@ header.vh-header {
   height: 66px;
   backdrop-filter: blur(2rem);
   background-color: var(--vh-header-bg-color);
-  box-shadow: var(--vh-box-shadow);
+  // box-shadow: var(--vh-box-shadow);
   transition: background-color 0.18s ease-in-out;
   z-index: 9;
 
@@ -91,25 +91,21 @@ header.vh-header {
           object-fit: contain;
         }
         /* 主题切换按钮样式 */
-        &.theme-toggle-wrapper {
+        &.theme-btn {
         display: flex;
         align-items: center;
         justify-content: center;
         padding: 0 !important;
         
           .theme-toggle {
-            margin: 0;
-          
+            margin: 0;         
           .vp-color-mode-switch {
             background: transparent;
             box-shadow: none;
             width: 2.2rem;
             height: 2.2rem;
             
-            &:hover {
-              background: var(--vh-main-color);
-              transform: none;
-              }
+           
             }
           }
         }
@@ -127,15 +123,15 @@ header.vh-header {
       &>nav {
         &>a.nav-link {
           display: none;
-        }
-
+        } 
         &>.menu-btn.nav-link {
           display: flex;
         }
-        &>.theme-toggle-wrapper {
+        &>.theme-btn.nav-link {
           display: none;
         }
       }
+      
     }
   }
 }

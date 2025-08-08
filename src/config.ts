@@ -4,10 +4,10 @@ export default {
   // 网站地址
   Site: 'https://luyao88.com',
   // 网站副标题  不曾与你分享的时间,我在进步
-  Subtitle: '马亚洲的博客',
+  Subtitle: '玛丽的博客',
   // 网站描述
   Description:
-    'Superma博客 专注于全栈开发与游戏引擎相关技术的实战学习分享，涵盖Java、H5、JS、Unity、Cocos等，并涉及Node、Python、Linux、等领域。同时，博客也分享作者的生活、音乐和旅行的热爱。',
+    '「一生短暂，过程很美」Superma博客 专注于全栈开发与游戏引擎相关技术的实战学习分享，涵盖Java、H5、JS、Unity、Cocos等，并涉及Node、Python、Linux、等领域。同时，博客也分享作者的生活、音乐和旅行的热爱。',
   // 网站作者中心位置
   Author: '.🆂🆄🅿🅴🆁🅼🅰',
   // 作者头像中心位置
@@ -15,7 +15,7 @@ export default {
   // 作者头像左侧位置
   Avatar2: '/assets/images/avator2.webp',
   // 网站座右铭左侧
-  Motto: ' 世上的人遍地都是，说的着的人千里难寻',
+  Motto: ' 路遥知马力，日久见人心 ',
   // Cover 网站缩略图
   Cover: '/assets/images/banner/072c12ec85d2d3b5.webp',
   // 网站侧边栏公告 (不填写即不开启)
@@ -26,7 +26,7 @@ export default {
     'Silent growth beneath the dark, waiting to bloom in the light.',
   ],
   // 网站创建时间
-  CreateTime: '2021-04-22',
+  CreateTime: '2021-04-22:00:00:00',
   //版本
   version: '1.0.0',
   // 顶部 Banner 配置
@@ -39,17 +39,16 @@ export default {
     //首页播放视频 /assets/video/bg_1.mp4
     backgroundVideo: '',
     // 默认其他页面背景图片  //homeBnaner_02.jpg
-    backgroundImg: '/assets/images/homeBnaner_02.jpg',
-    // "url('/assets/images/home-banner.webp') no-repeat center 70%/cover",
-    //"url('/assets/images/1751364092817.jpg') no-repeat center 70%/cover",
+    backgroundImg:
+      'https://cn.bing.com/th?id=OHR.SunbeamsForest_ZH-CN5358008117_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp',
   },
   // 博客主题配置
   Theme: {
     // 颜色请用 16 进制颜色码
-    // 主题颜色()  rgb(3, 182, 170) #ff83a4ff #cd1a63
-    '--vh-main-color': '#e9819d',
+    // 主题颜色()  rgb(3, 182, 170) #ff83a4ff #cd1a63  rgba(177, 186, 0, 1)
+    '--vh-main-color': `rgba(93, 0, 186, 1)`,
     // 字体颜色  浅色主题字体:  #34495e',
-    '--vh-font-color': ' #34495e',
+    '--vh-font-color': ' #000000ff',
     // 侧边栏宽度
     '--vh-aside-width': '318px',
     // 全局圆角
@@ -62,7 +61,12 @@ export default {
     // 仅支持 SVG 且 SVG 需放在 public/assets/images/svg/ 目录下，填入文件名即可 <不需要文件后缀名>（封装了 SVG 组件 为了极致压缩 SVG）
     // 建议使用 https://tabler.io/icons 直接下载 SVG  // 为每个导航添加背景图片
     {
-      text: '朋友',
+      text: '首页',
+      link: '/',
+      icon: 'Nav_home',
+    },
+    {
+      text: '友链',
       link: '/links',
       icon: 'Nav_friends',
     },
@@ -72,14 +76,14 @@ export default {
       icon: 'Nav_rss',
     },
     {
-      text: '动态',
+      text: '说说',
       link: '/talking',
       icon: 'Nav_talking',
     },
     {
-      text: '昔日',
+      text: '归档',
       link: '/archives',
-      icon: 'Nav_archives',
+      icon: 'vocabulary',
     },
     {
       text: '留言',
@@ -91,12 +95,12 @@ export default {
       link: '/about',
       icon: 'Nav_about',
     },
-    {
-      text: 'API',
-      link: 'https://api.vvhan.com/',
-      target: true,
-      icon: 'Nav_link',
-    },
+    // {
+    //   text: 'API',
+    //   link: 'https://api.vvhan.com/',
+    //   target: true,
+    //   icon: 'Nav_link',
+    // },
   ],
   // 侧边栏个人网站
   WebSites: [
@@ -107,7 +111,7 @@ export default {
     //   link: 'https://github.com/luyao88',
     //   icon: 'WebSite_github',
     // },
-    // { text: '韩小韩API', link: 'https://api.vvhan.com', icon: 'WebSite_api' },
+    // { text: 'API', link: 'https://api.vvhan.com', icon: 'WebSite_api' },
     // { text: '每日热榜', link: 'https://hot.vvhan.com', icon: 'WebSite_hot' },
     // {
     //   text: '骤雨重山图床',

@@ -2,6 +2,8 @@ let isSettingsOpen = false // 设置面板显示状态
 let isSimpleChinese = true // 默认简体中文
 let isFullScreen = false // 全屏状态
 let isSidebarVisible = true // 侧栏显隐状态 (变量名更清晰)
+let isDarkMode = false // 主题模式状态
+
 // 滚动条高度变化事件======
 const scrollChangeFn = () => {
   const scrollHeight = document.documentElement.scrollHeight
@@ -43,6 +45,7 @@ const scrollChangeFn = () => {
   circle.style.strokeDashoffset =
     circumference - (percentage / 100) * circumference
 }
+
 // 简繁切换
 const toggleLanguage = () => {
   isSimpleChinese = !isSimpleChinese
@@ -67,7 +70,10 @@ const toggleSidebar = () => {
   aside.classList.toggle('hidden', !isSidebarVisible)
 
   // 更新侧栏按钮状态
-  const sidebarToggleBtn = document.querySelector('.sidebar-toggle')
+  const sidebarToggleBtn = document.querySelector(
+    '.sidebar-toggle'
+  ) as HTMLElement | null
+
   if (sidebarToggleBtn) {
     sidebarToggleBtn.setAttribute(
       'data-state',
@@ -114,7 +120,48 @@ const backTopFn = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' })
   ;(window as any).vhlenis && (window as any).vhlenis.start()
 }
+// 主题切换功能
+const setTheme = (theme: 'light' | 'dark') => {
+  const html = document.documentElement
+  html.classList.remove('light', 'dark')
+  html.classList.add(theme)
+  localStorage.setItem('theme', theme)
+  isDarkMode = theme === 'dark'
+}
+const changeTheme = () => {
+  // 直接从html元素的类中获取当前主题，而不是依赖isDarkMode变量
+  const html = document.documentElement
+  const currentTheme = html.classList.contains('dark') ? 'dark' : 'light'
+  const nextTheme = currentTheme === 'light' ? 'dark' : 'light'
+  setTheme(nextTheme)
+}
 
+const changeBtn = (func: Function, event: MouseEvent) => {
+  const x = event.clientX
+  const y = event.clientY
+  // 计算鼠标点击位置距离视窗的最大圆半径
+  const endRadius = Math.hypot(
+    Math.max(x, innerWidth - x),
+    Math.max(y, innerHeight - y)
+  )
+  document.documentElement.style.setProperty('--x', x + 'px')
+  document.documentElement.style.setProperty('--y', y + 'px')
+  document.documentElement.style.setProperty('--r', endRadius + 'px')
+  // 判断浏览器是否支持document.startViewTransition
+  if ((document as any).startViewTransition) {
+    // 如果支持就使用document.startViewTransition方法
+    ;(document as any).startViewTransition(() => {
+      func.call(null) // 这里的函数是切换主题的函数，调用changeBtn函数时进行传入
+    })
+  } else {
+    // 如果不支持，就使用最原始的方式，切换主题
+    func.call(null)
+  }
+}
+
+const toggleTheme = (event: MouseEvent) => {
+  changeBtn(changeTheme, event)
+}
 // 页面更新，初始化函数======
 // 回顶部DOM
 let backTop: any = document.querySelector('.vh-back-top')
@@ -229,4 +276,9 @@ export default () => {
   // 添加侧栏显隐事件监听
   sidebarToggleBtn?.removeEventListener('click', toggleSidebar)
   sidebarToggleBtn?.addEventListener('click', toggleSidebar)
+
+  // 添加主题切换事件监听
+  const themeSwitchBtn = document.querySelector('.theme-switch')
+  themeSwitchBtn?.removeEventListener('click', toggleTheme as EventListener)
+  themeSwitchBtn?.addEventListener('click', toggleTheme as EventListener)
 }

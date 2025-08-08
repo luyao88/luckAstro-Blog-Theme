@@ -1,6 +1,10 @@
 ---
 import SITE_CONFIG from '@/config'
-const { Navs, Title } = SITE_CONFIG
+const { Navs, Title, Avatar2, Author, Motto, WebSites, AsideShow } = SITE_CONFIG
+// 获取文章数据
+import { getCountInfo } from '@/utils/getPostInfo'
+// 获取网站统计数据
+const CountInfo = getCountInfo()
 // Svg 组件
 import Svg from '@/components/Svg/Svg.astro'
 // 侧边栏 MobileSidebar 样式
@@ -12,7 +16,49 @@ import './MobileSidebar.less'
     <div class="vh-mobilesidebar-list user-panel">
       <h3>{Title}</h3>
     </div>
-
+    <!-- 完整复制Aside组件中的头像块部分 -->
+    {
+      AsideShow.WebSitesShow && (
+        <div class="vh-mobilesidebar-list user">
+          <img
+            class="vh-aside-avatar"
+            src="/assets/images/lazy-loading.webp"
+            data-vh-lz-src={Avatar2}
+            alt={Author}
+          />
+          <span class="vh-aside-auther">{Author}</span>
+          <p class="vh-aside-motto">{Motto}</p>
+          <section class="vh-aside-links">
+            {WebSites.map((item) => (
+              <a
+                class="vh-aside-links-item"
+                href={item.link}
+                title={item.text}
+                target="_blank"
+                rel="noopener nofollow"
+              >
+                <Svg src={item.icon} />
+              </a>
+            ))}
+          </section>
+          <section class="vh-aside-info">
+            <div class="art-item count">
+              <span>{CountInfo.ArticleCount}</span>
+              <p>文章数</p>
+            </div>
+            <div class="cat-item count">
+              <span>{CountInfo.CategoryCount}</span>
+              <p>分类数</p>
+            </div>
+            <div class="tag-item count">
+              <span>{CountInfo.TagCount}</span>
+              <p>标签数</p>
+            </div>
+          </section>
+          <canvas class="vh-aside-canvas" width="888" height="1888" />
+        </div>
+      )
+    }
     <div class="vh-mobilesidebar-list vh-link-list">
       {
         Navs.map((i) => (
